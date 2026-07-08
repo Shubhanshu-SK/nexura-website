@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nx-bg:      #08050e;
+  --color-nx-surface: #0f0a1d;
+  --color-nx-purple:  #8B22B8;
+  --color-nx-orchid:  #AA27E5;
+  --color-nx-coral:   #FF7F50;
+  --color-nx-text:    #F5F4FA;
+  --color-nx-muted:   #A0AEC0;
+
+  --font-family-outfit: var(--font-outfit), "Outfit", sans-serif;
+  --font-family-inter:  var(--font-inter), "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-nx-bg);
+  color: var(--color-nx-text);
+}
+
+/* Aurora background */
+.aurora-background {
+  --stripe-color: #fff;
+  --aurora-purple: #8B22B8;
+  --aurora-orchid: #AA27E5;
+  --aurora-violet: #CC55FF;
+}
+
+.aurora-background__layer {
+  --stripes: repeating-linear-gradient(
+    100deg,
+    var(--stripe-color) 0%,
+    var(--stripe-color) 7%,
+    transparent 10%,
+    transparent 12%,
+    var(--stripe-color) 16%
+  );
+  --rainbow: repeating-linear-gradient(
+    100deg,
+    var(--aurora-purple) 10%,
+    var(--aurora-orchid) 15%,
+    var(--aurora-violet) 20%,
+    var(--aurora-purple) 25%,
+    var(--aurora-orchid) 30%,
+    var(--aurora-violet) 35%,
+    var(--aurora-purple) 40%,
+    var(--aurora-orchid) 45%,
+    var(--aurora-violet) 50%
+  );
+  background-image: var(--stripes), var(--rainbow);
+  background-size: 300%, 200%;
+  background-position: 50% 50%, 50% 50%;
+  filter: blur(10px) invert(1);
+  opacity: 0.12;
+  animation: smoothBg 60s linear infinite;
+  mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at 100% 0%,
+    black 40%,
+    transparent 70%
+  );
+}
+
+@keyframes smoothBg {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+/* Hero float animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes chipFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-chip-float {
+  animation: chipFloat 4s ease-in-out infinite;
+}
+
+/* 3D Carousel Styles */
+.member-card img {
+  filter: grayscale(100%);
+  transition: filter 0.4s ease;
+}
+.member-card:hover img {
+  filter: grayscale(0%);
+}
+.carousel-wrapper {
+  cursor: grab;
+}
+.carousel-wrapper:active {
+  cursor: grabbing;
+}
+.member-card-border {
+  border: 1px solid rgba(139, 34, 184, 0.25);
+  transition: border-color 0.3s ease;
+}
+.member-card:hover .member-card-border {
+  border-color: rgba(170, 39, 229, 0.6);
+}
