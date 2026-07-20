@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import PageLoader from "@/components/ui/PageLoader";
+import RouteProgressBar from "@/components/ui/RouteProgressBar";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -29,6 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable} bg-nx-bg`}>
       <body className="min-h-screen bg-nx-bg text-nx-text font-inter antialiased">
+        <PageLoader />
+        <RouteProgressBar />
         <Navbar />
         {children}
         <Footer />
