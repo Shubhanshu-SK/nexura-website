@@ -134,7 +134,6 @@ export const MEMBERS: IMember[] = [
   bio: "Leading the 3D Animation & VFX domain, specializing in high-quality 3D modelling, visual effects, motion graphics, and creative digital content for club projects and events.",
   linkedin: "https://www.linkedin.com/in/kunal-thakur-014ba5307",
   instagram: "https://www.instagram.com/_kvnall?igsh=N3Exb3FidGtxMWh1",
-  instagramSecondary: "https://www.instagram.com/kuniverse.3d?igsh=MTdycGt3cTlwZGwwNQ==",
 },
     {
     name: "Anshu Verma",
