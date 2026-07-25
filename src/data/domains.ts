@@ -1,74 +1,76 @@
 import type { IDomainData } from "@/types";
 
 export const DOMAINS: IDomainData[] = [
+const domains = [
   {
     id: 0,
-    name: "UI/UX Design",
-    iconName: "Sparkles",
-    tag: "Design",
+    name: "Graphics Department",
+    iconName: "Palette",
+    tag: "Creative",
     portfolioUrl: "https://nexura-ui-ux-department.vercel.app/",
     description:
-      "Crafting user-friendly digital experiences through Figma, wireframing, and prototyping.",
+      "Creating impactful visual identities, branding assets, digital graphics, and creative media for the club and its initiatives.",
     bullets: [
-      "User-centric wireframing",
-      "Visual & interactive design",
-      "Usability testing",
+      "Brand identity & visual design",
+      "Posters, banners & social creatives",
+      "Illustrations & digital graphics",
     ],
   },
   {
     id: 1,
-    name: "Web Development",
+    name: "Technical Department",
     iconName: "Code2",
-    tag: "Engineering",
+    tag: "Technology",
     portfolioUrl: "https://nexura-webdevelopment-final.vercel.app/",
     description:
-      "Full-stack systems from React frontends to Node.js backends.",
+      "Building technical excellence through web development, DSA, AI, modern development technologies, and emerging software skills.",
     bullets: [
-      "Full-stack development",
-      "Custom web applications",
-      "API integration & backend",
+      "Web Development & Full-Stack Projects",
+      "DSA, AI & Development Technologies",
+      "Problem Solving & Emerging Tech",
     ],
   },
   {
     id: 2,
-    name: "3D & Animation",
+    name: "3D, VFX & Animation",
     iconName: "Box",
     tag: "Creative",
     portfolioUrl: "https://nexura-3-d-department.vercel.app/",
     description:
-      "VFX, product visualization, and Blender animations for automotive projects.",
+      "Designing immersive 3D models, cinematic animations, visual effects, and motion graphics for creative and technical projects.",
     bullets: [
-      "High-quality 3D models",
-      "Photorealistic rendering",
-      "Motion graphics & VFX",
+      "3D Modelling & Rendering",
+      "Animation & Motion Graphics",
+      "Visual Effects (VFX)",
     ],
   },
   {
     id: 3,
-    name: "Parametric & Simulation",
+    name: "Parametric Modelling",
     iconName: "Settings2",
     tag: "Engineering",
     portfolioUrl: "https://parametric-modelling-dept-nexura.vercel.app/",
     description:
-      "ANSYS and SolidWorks FEA simulations for real-world engineering design.",
+      "Advanced CAD modelling, engineering simulations, and design optimisation focused on Automobile and Mechanical Engineering applications.",
     bullets: [
-      "Advanced CAD modelling",
-      "Finite Element Analysis",
-      "Stress & thermal simulation",
+      "CAD Design using SolidWorks",
+      "FEA & Engineering Simulation",
+      "Automobile & Mechanical Design",
     ],
   },
   {
     id: 4,
-    name: "PR & Operations",
+    name: "PR Department",
     iconName: "Megaphone",
     tag: "Management",
     portfolioUrl: "https://versal-nexura.vercel.app/",
     description:
-      "Brand outreach, event coordination, and sponsor engagement.",
+      "Managing the club's public presence through outreach, content creation, social media engagement, and successful event execution.",
     bullets: [
-      "Strategic communication",
-      "Event planning & coordination",
-      "Social media management",
+      "Public Relations & Outreach",
+      "Content Writing & Social Media",
+      "Event Planning & Management",
     ],
   },
+];
 ];
