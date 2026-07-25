@@ -1,7 +1,7 @@
 import type { IDomainData } from "@/types";
 
 export const DOMAINS: IDomainData[] = [
-const domains = [
+
   {
     id: 0,
     name: "Graphics Department",
@@ -72,5 +72,4 @@ const domains = [
       "Event Planning & Management",
     ],
   },
-];
 ];
