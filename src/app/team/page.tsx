@@ -26,8 +26,8 @@ const filterOptions: { label: string; value: CategoryFilter }[] = [
 
 const categories = [
   { id: "Faculty Mentor", title: "Faculty Mentors" },
-  { id: "Domain Lead", title: "Domain Leads" },
   { id: "Admin", title: "Admin Team" },
+  { id: "Domain Lead", title: "Domain Leads" },
   { id: "Member", title: "Team Members" },
 ] as const;
 
