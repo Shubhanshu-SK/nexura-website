@@ -93,7 +93,6 @@ export default function RegisterPage() {
   const activeBranches = fields.institute === "SOIT" ? SOIT_BRANCHES : UIT_BRANCHES
 
   return (
-    <AuroraBackground className="min-h-screen">
       <main className="min-h-screen flex flex-col items-center justify-center px-4 py-24">
         <motion.div
           className="w-full max-w-lg"
@@ -339,6 +338,5 @@ export default function RegisterPage() {
           </div>
         </motion.div>
       </main>
-    </AuroraBackground>
   )
 }
