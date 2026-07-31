@@ -14,6 +14,7 @@ export default function HomePage() {
       <MetricsStrip />
       <VisionMissionSection />
       <UpcomingEventsSection />
+      <AlumniSection />
       <DomainsSection id="domains" />
       <TeamSection />
       <FAQSection />
