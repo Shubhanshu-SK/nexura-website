@@ -15,10 +15,10 @@ export default function HomePage() {
       <MetricsStrip />
       <VisionMissionSection />
       <UpcomingEventsSection />
-      <AlumniSection />
       <DomainsSection id="domains" />
       <TeamSection />
       <FAQSection />
+      <AlumniSection />
       <ContactSection id="contact" />
     </main>
   )
