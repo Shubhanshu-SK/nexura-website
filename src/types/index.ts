@@ -60,3 +60,14 @@ export interface IRegistration {
   enrollmentNo: string
   createdAt: string
 }
+
+export interface IAlumni {
+  id: string
+  name: string
+  batch: string
+  image?: string
+  currentRole?: string
+  company?: string
+  linkedin?: string
+  featured: boolean
+}
