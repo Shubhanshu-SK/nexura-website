@@ -9,9 +9,26 @@
   --color-nx-text:    #F5F4FA;
   --color-nx-muted:   #A0AEC0;
 
+  --color-nx-gold:        #D4A853;
+  --color-nx-gold-muted:  rgba(212,168,83,0.15);
+  --color-nx-gold-border: rgba(212,168,83,0.35);
+
   --font-family-outfit: var(--font-outfit), "Outfit", sans-serif;
   --font-family-inter:  var(--font-inter), "Inter", sans-serif;
 }
+
+.al-glass-cube {
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.al-card-hover:hover .al-glass-cube {
+  transform: scale(1.08) rotate(-2deg);
+}
+.al-shimmer {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px;
+  background: linear-gradient(90deg, transparent, #D4A853, transparent);
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.al-card-hover:hover .al-shimmer { opacity: 1; }
 
 * {
   box-sizing: border-box;
