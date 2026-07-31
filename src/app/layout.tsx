@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import PageLoader from "@/components/ui/PageLoader";
 import RouteProgressBar from "@/components/ui/RouteProgressBar";
 import "./globals.css";
+import DissolveHeroSection from "@/components/sections/DissolveHeroSection"
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
         <RouteProgressBar />
         <Navbar />
         {children}
+        <DissolveHeroSection />
         <Footer />
       </body>
     </html>
