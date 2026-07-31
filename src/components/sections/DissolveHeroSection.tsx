@@ -12,7 +12,7 @@ export default function DissolveHeroSection() {
       {/* Mobile View */}
       <div className="block md:hidden">
         <ScrollDissolveReveal
-          imageFront="/images/dissolve.png" // Mobile Front Image
+          imageFront="/images/BG.png" // Mobile Front Image
           imageBack="/images/LOGO NEXURA 1.png"
           containerClassName="w-full"
           className="w-full"
@@ -22,7 +22,7 @@ export default function DissolveHeroSection() {
       {/* Laptop / Desktop View */}
       <div className="hidden md:block">
         <ScrollDissolveReveal
-          imageFront="/images/dissolve2.png" // Laptop/Desktop Front Image
+          imageFront="/images/BG.png" // Laptop/Desktop Front Image
           imageBack="/images/LOGO NEXURA 1.png"
           containerClassName="w-full"
           className="w-full"
