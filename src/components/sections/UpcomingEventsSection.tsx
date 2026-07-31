@@ -19,7 +19,6 @@ export default async function UpcomingEventsSection() {
     <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
 
-        {/* Header row with "View All" link */}
         <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
           <SectionHeader
             eyebrow="What's coming"
@@ -35,7 +34,6 @@ export default async function UpcomingEventsSection() {
           </Link>
         </div>
 
-        {/* Empty state */}
         {events.length === 0 && (
           <GlassCard className="p-12 text-center max-w-sm mx-auto">
             <Calendar size={40} className="text-nx-orchid mx-auto mb-3" />
@@ -44,7 +42,6 @@ export default async function UpcomingEventsSection() {
           </GlassCard>
         )}
 
-        {/* Events grid — max 3 cards */}
         {events.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {events.map((event) => (
@@ -57,14 +54,12 @@ export default async function UpcomingEventsSection() {
                            transition-all duration-300
                            hover:shadow-[0_8px_32px_rgba(170,39,229,0.12)]"
               >
-                {/* Color strip */}
                 <div
                   className="h-1 w-full"
                   style={{ background: event.stripbg || "#AA27E5" }}
                 />
 
                 <div className="p-5">
-                  {/* Date */}
                   <div
                     className="flex items-center gap-2 text-nx-muted text-[10px]
                                 uppercase tracking-widest mb-3"
@@ -77,7 +72,6 @@ export default async function UpcomingEventsSection() {
                     })}
                   </div>
 
-                  {/* Title */}
                   <h3
                     className="text-nx-text font-outfit font-bold text-lg
                                leading-tight mb-2 line-clamp-2"
@@ -85,7 +79,6 @@ export default async function UpcomingEventsSection() {
                     {event.name}
                   </h3>
 
-                  {/* Description */}
                   <p
                     className="text-nx-muted text-xs leading-relaxed
                               line-clamp-2 mb-4"
@@ -93,7 +86,6 @@ export default async function UpcomingEventsSection() {
                     {event.description}
                   </p>
 
-                  {/* Meta row */}
                   <div className="flex items-center gap-3 mb-5 flex-wrap">
                     <span className="flex items-center gap-1 text-nx-muted text-[10px]">
                       <Clock size={10} /> {event.time}
@@ -109,32 +101,22 @@ export default async function UpcomingEventsSection() {
                     </span>
                   </div>
 
-                  {/* CTA */}
-                  {event.registrationLink ? (
-                    <a
-                      href={event.registrationLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <RadialGlowButton size="sm" className="w-full">
-                        Register →
-                      </RadialGlowButton>
-                    </a>
-                  ) : (
-                    <Link href={`/register?eventId=${event._id}`} className="block">
-                      <RadialGlowButton size="sm" className="w-full">
-                        Register →
-                      </RadialGlowButton>
-                    </Link>
-                  )}
+                  {/* ── CHANGED: both cases now go to /events/[id] ── */}
+                  <Link
+                    href={`/events/${event._id}`}
+                    className="block"
+                  >
+                    <RadialGlowButton size="sm" className="w-full">
+                      Register →
+                    </RadialGlowButton>
+                  </Link>
+
                 </div>
               </div>
             ))}
           </div>
         )}
 
-        {/* View all button (bottom) */}
         {events.length > 0 && (
           <div className="flex justify-center mt-10">
             <RadialGlowButton variant="ghost" size="md" href="/events">
