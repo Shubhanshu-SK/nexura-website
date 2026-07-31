@@ -10,7 +10,7 @@ export default function DissolveHeroSection() {
   return (
     <section className="w-full bg-nx-bg">
         <ScrollDissolveReveal
-          imageFront="/images/BG.png" // Laptop/Desktop Front Image
+          imageFront="/images/BG.jpg" // Laptop/Desktop Front Image
           imageBack="/images/LOGO NEXURA 1.png"
           containerClassName="w-full"
           className="w-full"
