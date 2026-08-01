@@ -73,9 +73,9 @@ export default function ContactSection({ id }: ContactSectionProps) {
             <Phone size={20} className="text-nx-orchid mt-0.5 flex-shrink-0" />
             <div>
               <p className="text-nx-text text-sm font-semibold mb-2">Phone</p>
-              <p className="text-nx-muted text-xs leading-6">Pawan Soni: +91 7477098233</p>
-              <p className="text-nx-muted text-xs leading-6">Astha Pawar: +91 8305566978</p>
-              <p className="text-nx-muted text-xs leading-6">Soumya Shrivastava: +91 9630012262</p>
+              <p className="text-nx-muted text-xs leading-6">Rishabh Singh Tomar: +91 7440723227</p>
+              <p className="text-nx-muted text-xs leading-6">Yashi Trivedi: +91 9343665017</p>
+              <p className="text-nx-muted text-xs leading-6">Vishal Singh Thakur: +91 9691206265</p>
             </div>
           </div>
 
