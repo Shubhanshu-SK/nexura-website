@@ -63,7 +63,7 @@ export const DOMAINS: IDomainData[] = [
     name: "PR Department",
     iconName: "Megaphone",
     tag: "Management",
-    portfolioUrl: "https://versal-nexura.vercel.app/",
+    portfolioUrl: "https://nexurargpv.dpdns.org/",
     description:
       "Managing the club's public presence through outreach, content creation, social media engagement, and successful event execution.",
     bullets: [
