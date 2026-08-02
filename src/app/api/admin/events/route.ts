@@ -44,7 +44,7 @@ const eventCreateSchema = z.object({
 export const GET = withAdminAuth(async (req: AuthenticatedRequest) => {
   try {
     await dbConnect()
-    const events = await Event.find({}).sort({ date: 1 })
+    const events = await Event.find({}).sort({ date: -1 })
     return NextResponse.json(events, { status: 200 })
   } catch (error) {
     console.error("[GET Admin Events Error]", error)
