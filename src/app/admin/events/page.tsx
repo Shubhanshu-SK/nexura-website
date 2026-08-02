@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState, useCallback, useRef } from "react"
 import { useRouter } from "next/navigation"
+import { uploadToCloudinary } from "@/lib/uploadToCloudinary"
 
 interface IEvent {
   _id: string
@@ -105,6 +106,10 @@ function EventModal({
   )
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState("")
+  const [imageTab, setImageTab] = useState<"upload" | "url">(event?.imageUrl ? "url" : "upload")
+  const [uploading, setUploading] = useState(false)
+  const [uploadError, setUploadError] = useState("")
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleSave = async () => {
     setSaving(true)
@@ -153,6 +158,33 @@ function EventModal({
       setError("Network error")
     } finally {
       setSaving(false)
+    }
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    if (!file.type.startsWith("image/")) {
+      setUploadError("Please select an image file (JPG, PNG, WebP)")
+      return
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setUploadError("Image must be under 5MB")
+      return
+    }
+
+    setUploading(true)
+    setUploadError("")
+
+    try {
+      const url = await uploadToCloudinary(file)
+      setForm(p => ({ ...p, imageUrl: url }))
+    } catch (error: any) {
+      setUploadError(error.message || "Upload failed. Try again.")
+    } finally {
+      setUploading(false)
     }
   }
 
@@ -270,9 +302,137 @@ function EventModal({
           />
         </div>
 
+        {/* Image — upload or paste URL */}
         <div style={fieldStyle}>
-          <label style={labelStyle}>Image URL *</label>
-          <input style={inputStyle} value={form.imageUrl} onChange={(e) => setForm((p) => ({ ...p, imageUrl: e.target.value }))} placeholder="https://..." />
+          <label style={labelStyle}>Event Image</label>
+
+          {/* Tab-style toggle between Upload and URL */}
+          <div style={{
+            display: "flex", gap: 0, marginBottom: 10,
+            border: "1px solid rgba(139,34,184,0.25)", borderRadius: 8,
+            overflow: "hidden",
+          }}>
+            {(["upload", "url"] as const).map(tab => (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => {
+                  setImageTab(tab)
+                  setUploadError("")
+                }}
+                style={{
+                  flex: 1, padding: "7px 0", border: "none", cursor: "pointer",
+                  fontSize: 11, fontWeight: 600, letterSpacing: 1,
+                  textTransform: "uppercase",
+                  background: imageTab === tab
+                    ? "rgba(139,34,184,0.3)"
+                    : "transparent",
+                  color: imageTab === tab ? "#AA27E5" : "#A0AEC0",
+                  transition: "all 0.2s",
+                }}
+              >
+                {tab === "upload" ? "Upload File" : "Paste URL"}
+              </button>
+            ))}
+          </div>
+
+          {/* Upload tab */}
+          {imageTab === "upload" && (
+            <div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                style={{ display: "none" }}
+              />
+
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+                style={{
+                  width: "100%", padding: "10px 14px", borderRadius: 8,
+                  border: "1px dashed rgba(139,34,184,0.4)",
+                  background: "rgba(139,34,184,0.05)",
+                  color: uploading ? "#A0AEC0" : "#AA27E5",
+                  fontSize: 13, cursor: uploading ? "not-allowed" : "pointer",
+                  display: "flex", alignItems: "center",
+                  justifyContent: "center", gap: 8,
+                  boxSizing: "border-box",
+                }}
+              >
+                {uploading
+                  ? "Uploading..."
+                  : "Click to choose image (JPG, PNG, WebP · max 5MB)"
+                }
+              </button>
+
+              {form.imageUrl && !uploading && (
+                <div style={{ marginTop: 10 }}>
+                  <img
+                    src={form.imageUrl}
+                    alt="Preview"
+                    style={{
+                      width: "100%", height: 120, objectFit: "cover",
+                      borderRadius: 8, border: "1px solid rgba(139,34,184,0.3)",
+                    }}
+                  />
+                  <p style={{
+                    fontSize: 10, color: "#A0AEC0", marginTop: 4,
+                    wordBreak: "break-all", fontFamily: "Inter, sans-serif",
+                  }}>
+                    {form.imageUrl}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForm(p => ({ ...p, imageUrl: "" }))
+                      if (fileInputRef.current) fileInputRef.current.value = ""
+                    }}
+                    style={{
+                      marginTop: 4, fontSize: 11, color: "#FF7F50",
+                      background: "none", border: "none", cursor: "pointer",
+                      padding: 0, fontFamily: "Inter, sans-serif",
+                    }}
+                  >
+                    Remove image
+                  </button>
+                </div>
+              )}
+
+              {uploadError && (
+                <p style={{ color: "#FF7F50", fontSize: 11, marginTop: 6, fontFamily: "Inter, sans-serif" }}>
+                  {uploadError}
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* URL tab */}
+          {imageTab === "url" && (
+            <div>
+              <input
+                type="url"
+                style={inputStyle}
+                value={form.imageUrl}
+                onChange={e => setForm(p => ({ ...p, imageUrl: e.target.value }))}
+                placeholder="https://example.com/image.jpg"
+              />
+              {form.imageUrl && (
+                <img
+                  src={form.imageUrl}
+                  alt="Preview"
+                  onError={e => { (e.target as HTMLImageElement).style.display = "none" }}
+                  style={{
+                    width: "100%", height: 100, objectFit: "cover",
+                    borderRadius: 8, marginTop: 8,
+                    border: "1px solid rgba(139,34,184,0.3)",
+                  }}
+                />
+              )}
+            </div>
+          )}
         </div>
 
         <div style={gridTwo}>
