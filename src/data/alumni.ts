@@ -8,7 +8,7 @@ export const ALUMNI: IAlumni[] = [
     image: "/people/Soumya Ma'am.jpg",
     currentRole: "Gate aspirant",
     company: "",
-    linkedin: "https://linkedin.com/in/soumya-shrivastava",
+    linkedin: "hhttps://www.linkedin.com/in/soumya-shrivastava26?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     featured: true,
   },
   {
@@ -18,7 +18,7 @@ export const ALUMNI: IAlumni[] = [
     image: "/people/pawan soni.jpg",
     currentRole: "Assistent manager",
     company: "volvo Eicher",
-    linkedin: "https://linkedin.com/in/pawan-soni",
+    linkedin: "https://www.linkedin.com/in/pawan-soni-10885b257?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     featured: true,
   },
   {
@@ -28,7 +28,7 @@ export const ALUMNI: IAlumni[] = [
     image: "/people/Astha Ma'am.jpg",
     currentRole: "Gate aspirant",
     company: "",
-    linkedin: "https://linkedin.com/in/astha-pawar",
+    linkedin: "https://www.linkedin.com/in/astha-pawar013?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     featured: true,
   },
 ]
